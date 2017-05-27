@@ -5,6 +5,16 @@ xsi:schemaLocation="http://java.sun.comm/xml/ns/javaee http://java.sun.com/xml/n
 version="3.0">
 	<display-name>QnA</display-name>
 	
+	<servlet>
+		<servlet-name>slipp</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>slipp</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

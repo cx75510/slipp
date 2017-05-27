@@ -4,7 +4,15 @@
   <artifactId>qna</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
-  
+
+<dependencies>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>4.3.8.RELEASE</version>
+</dependency>
+</dependencies>
+
   <build>
   	<finalName>qna</finalName>
   	
@@ -12,9 +20,6 @@
         <plugin>
 			<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
-				<configuration>
-					<warSourceDirectory>webapp</warSourceDirectory>
-				</configuration>
         </plugin>
         <plugin>
 			<artifactId>maven-eclipse-plugin</artifactId>
