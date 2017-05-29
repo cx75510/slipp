@@ -4,24 +4,28 @@
   <artifactId>qna</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
+  
+  <properties>
+  	<org.springframework.version>4.3.8.RELEASE</org.springframework.version>
+  </properties>
 
 	<dependencies>
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-webmvc</artifactId>
-		    <version>4.3.8.RELEASE</version>
+		    <version>${org.springframework.version}</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-    		<version>4.3.8.RELEASE</version>
+    		<version>${org.springframework.version}</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-test</artifactId>
-		    <version>4.3.8.RELEASE</version>
+		    <version>${org.springframework.version}</version>
 		</dependency>
 
 		<dependency>
