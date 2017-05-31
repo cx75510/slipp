@@ -38,7 +38,7 @@ public class UserController {
 			logger.debug("Binding Result has error!");
 			List<ObjectError> errors = bindingResult.getAllErrors();
 			for(ObjectError error : errors){
-				logger.debug("error : {}", error.getDefaultMessage());
+				logger.debug("error : {}, {}", error.getObjectName(), error.getDefaultMessage());
 			}
 			return "users/form";
 		}
