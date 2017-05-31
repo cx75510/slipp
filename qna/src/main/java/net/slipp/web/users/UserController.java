@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import net.slipp.dao.users.UserDao;
+import net.slipp.domain.users.Authenticate;
 import net.slipp.domain.users.User;
 
 @Controller
@@ -46,5 +47,30 @@ public class UserController {
 		userDao.create(user);
 		logger.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/login/form")
+	public String loginForm(Model model){
+		model.addAttribute("authenticate", new User());
+		return "users/login";
+	}
+	@RequestMapping("/login/form")
+	public String login(@Valid Authenticate authenticate, BindingResult bindingResult){
+		if(bindingResult.hasErrors()){
+			return "users/login";
+		}
+		
+		User user = userDao.findById(authenticate.getUserId());
+		if(user == null){
+			//에러 처리 - 존재하지 않을때
+		}
+		
+		if(!user.getPassword().equals(authenticate.getPassword())){
+			//에러 처리 - 비밀번호가 맞지 않을 때
+		}
+		
+		//세션에 사용자 정보 저장
+		
+		return "users/login";
 	}
 }
