@@ -79,11 +79,6 @@ public class UserController {
 			throw new NullPointerException();
 		}
 		
-		String userId =(String)temp;
-		if(!user.matchUserId(userId)){
-			throw new NullPointerException();
-		}
-		
 		userDao.update(user);
 		logger.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
