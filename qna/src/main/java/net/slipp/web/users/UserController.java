@@ -51,22 +51,28 @@ public class UserController {
 	
 	@RequestMapping("/login/form")
 	public String loginForm(Model model){
-		model.addAttribute("authenticate", new User());
+		System.out.println("aaaa");
+		model.addAttribute("authenticate", new Authenticate());
 		return "users/login";
 	}
-	@RequestMapping("/login/form")
-	public String login(@Valid Authenticate authenticate, BindingResult bindingResult){
+	@RequestMapping("/login")
+	public String login(@Valid Authenticate authenticate, BindingResult bindingResult, Model model){
+
 		if(bindingResult.hasErrors()){
 			return "users/login";
 		}
 		
 		User user = userDao.findById(authenticate.getUserId());
 		if(user == null){
-			//에러 처리 - 존재하지 않을때
+			System.out.println(user);
+			model.addAttribute("errorMessage","존재하지 않는 사용자입니다.");
+			return "users/login";
 		}
 		
 		if(!user.getPassword().equals(authenticate.getPassword())){
 			//에러 처리 - 비밀번호가 맞지 않을 때
+			model.addAttribute("errorMessage","비밀번호가 틀립니다.");
+			return "users/login";
 		}
 		
 		//세션에 사용자 정보 저장

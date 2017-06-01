@@ -64,8 +64,11 @@ public class User {
 		return email;
 	}
 
-	public boolean matchPassword(String newPassword) {
-		return this.password.equals(newPassword);
+	public boolean matchPassword(Authenticate authenticate) {
+		if(this.password == null){
+			return false;
+		}
+		return authenticate.matchPassword(this.password);
 	}
 	
 	public boolean isSameUser(String newUserId){
