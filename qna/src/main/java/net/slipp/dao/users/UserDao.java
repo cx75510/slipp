@@ -20,13 +20,13 @@ public class UserDao extends JdbcDaoSupport{
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
 	
-	@PostConstruct
-	public void initialze(){
-		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-		populator.addScript(new ClassPathResource("slipp.sql"));
-		DatabasePopulatorUtils.execute(populator, getDataSource());
-		logger.info("database initialized success!");
-	}
+//	@PostConstruct
+//	public void initialze(){
+//		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+//		populator.addScript(new ClassPathResource("slipp.sql"));
+//		DatabasePopulatorUtils.execute(populator, getDataSource());
+//		logger.info("database initialized success!");
+//	}
 
 	public User findById(String userId) {
 		String sql = "select * from USERS where userId = ?";
@@ -51,6 +51,12 @@ public class UserDao extends JdbcDaoSupport{
 	public void create(User user) {
 		String sql = "insert into USERS values(?,?,?,?)";
 		getJdbcTemplate().update(sql, user.getUserId(), user.getPassword(), user.getName(), user.getEmail());
+		
+	}
+
+	public void update(User user) {
+		String sql = "update users set password=?, name=?, email=? where userid=?";
+		getJdbcTemplate().update(sql, user.getPassword(), user.getName(), user.getEmail(), user.getUserId());
 		
 	}
 

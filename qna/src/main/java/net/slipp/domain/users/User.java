@@ -126,5 +126,12 @@ public class User {
 			return false;
 		return true;
 	}
+
+	public boolean matchUserId(String inputUserId) {
+		if(inputUserId == null){
+			return false;
+		}
+		return inputUserId.equals(this.userId);
+	}
 	
 }
