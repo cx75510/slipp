@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import net.slipp.dao.users.UserDao;
+import net.slipp.dao.users.UserDAO;
 import net.slipp.domain.users.Authenticate;
 import net.slipp.domain.users.User;
 
@@ -26,7 +26,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	private UserDao userDao;
+	private UserDAO userDao;
 	
 	@RequestMapping("/form")
 	public String createForm(Model model){
@@ -54,7 +54,7 @@ public class UserController {
 	@RequestMapping("{userId}/form")
 	public String updateForm(@PathVariable String userId, Model model){
 		if(userId == null){
-			throw new IllegalArgumentException("»ç¿ëÀÚ ¾ÆÀÌµð°¡ ÇÊ¿äÇÕ´Ï´Ù.");
+			throw new IllegalArgumentException("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ê¿ï¿½ï¿½Õ´Ï´ï¿½.");
 		}
 		
 		User user = userDao.findById(userId);
@@ -101,19 +101,19 @@ public class UserController {
 		User user = userDao.findById(authenticate.getUserId());
 		if(user == null){
 			System.out.println(user);
-			model.addAttribute("errorMessage","Á¸ÀçÇÏÁö ¾Ê´Â »ç¿ëÀÚÀÔ´Ï´Ù.");
+			model.addAttribute("errorMessage","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
 			return "users/login";
 		}
 		
 		if(!user.getPassword().equals(authenticate.getPassword())){
-			//¿¡·¯ Ã³¸® - ºñ¹Ð¹øÈ£°¡ ¸ÂÁö ¾ÊÀ» ¶§
-			model.addAttribute("errorMessage","ºñ¹Ð¹øÈ£°¡ Æ²¸³´Ï´Ù.");
+			//ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ - ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			model.addAttribute("errorMessage","ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½Ï´ï¿½.");
 			return "users/login";
 		}
 		
 		session.setAttribute("userId", user.getUserId());
 		
-		//¼¼¼Ç¿¡ »ç¿ëÀÚ Á¤º¸ ÀúÀå
+		//ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		return "redirect:/";
 	}

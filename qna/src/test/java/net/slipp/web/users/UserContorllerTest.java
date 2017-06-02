@@ -17,12 +17,12 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import net.slipp.dao.users.UserDao;
+import net.slipp.dao.users.UserDAO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserContorllerTest {
 	@Mock
-	private UserDao userDao;
+	private UserDAO userDao;
 	
 	@InjectMocks
 	private UserController userController;
@@ -41,7 +41,7 @@ public class UserContorllerTest {
 				post("/users")
 					.param("userId", "javajigi")
 					.param("password", "password")
-					.param("name", "ÀÚ¹ÙÁö±â")
+					.param("name", "ï¿½Ú¹ï¿½ï¿½ï¿½ï¿½ï¿½")
 					.param("email", "")
 				)
 		.andDo(print())
@@ -54,7 +54,7 @@ public class UserContorllerTest {
 				post("/users")
 					.param("userId", "javajigi")
 					.param("password", "password")
-					.param("name", "ÀÚ¹ÙÁö±â")
+					.param("name", "ï¿½Ú¹ï¿½ï¿½ï¿½ï¿½ï¿½")
 					.param("email", "javajigi"))
 		.andDo(print())
 		.andExpect(status().isOk())

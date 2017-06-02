@@ -15,11 +15,11 @@ import net.slipp.domain.users.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/applicationContext.xml")
-public class UserDaoTest {
-	private static final Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
+public class JdbcUserDaoTest {
+	private static final Logger logger = LoggerFactory.getLogger(JdbcUserDaoTest.class);
 	
 	@Autowired
-	private UserDao userDao;
+	private UserDAO userDao;
 
 	@Test
 	public void findById() {

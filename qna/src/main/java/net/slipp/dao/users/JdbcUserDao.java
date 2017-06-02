@@ -16,9 +16,9 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import net.slipp.domain.users.User;
 
-public class UserDao extends JdbcDaoSupport{
+public class JdbcUserDao extends JdbcDaoSupport implements UserDAO{
 	
-	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
+	private static final Logger logger = LoggerFactory.getLogger(JdbcUserDao.class);
 	
 //	@PostConstruct
 //	public void initialze(){
@@ -28,6 +28,10 @@ public class UserDao extends JdbcDaoSupport{
 //		logger.info("database initialized success!");
 //	}
 
+	/* (non-Javadoc)
+	 * @see net.slipp.dao.users.IUserDAO#findById(java.lang.String)
+	 */
+	@Override
 	public User findById(String userId) {
 		String sql = "select * from USERS where userId = ?";
 		RowMapper<User> rowMapper = new RowMapper<User>() {
@@ -48,12 +52,20 @@ public class UserDao extends JdbcDaoSupport{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see net.slipp.dao.users.IUserDAO#create(net.slipp.domain.users.User)
+	 */
+	@Override
 	public void create(User user) {
 		String sql = "insert into USERS values(?,?,?,?)";
 		getJdbcTemplate().update(sql, user.getUserId(), user.getPassword(), user.getName(), user.getEmail());
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see net.slipp.dao.users.IUserDAO#update(net.slipp.domain.users.User)
+	 */
+	@Override
 	public void update(User user) {
 		String sql = "update users set password=?, name=?, email=? where userid=?";
 		getJdbcTemplate().update(sql, user.getPassword(), user.getName(), user.getEmail(), user.getUserId());
