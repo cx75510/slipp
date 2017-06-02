@@ -2,9 +2,11 @@ package net.slipp.domain.users;
 
 import javax.validation.constraints.Size;
 
+import org.apache.ibatis.type.Alias;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Alias("user")
 public class User {
 	@NotEmpty
 	@Size(min = 4, max = 12)
@@ -20,7 +22,7 @@ public class User {
 	@Email
 	private String email;
 
-	// »ý¼ºÀÚ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public User(String userId, String password, String name, String email) {
 		super();
 		this.userId = userId;
