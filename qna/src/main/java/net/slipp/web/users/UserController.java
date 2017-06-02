@@ -2,6 +2,7 @@ package net.slipp.web.users;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -25,7 +26,7 @@ import net.slipp.domain.users.User;
 public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
-	@Autowired
+	@Resource(name="userDao")
 	private UserDAO userDao;
 	
 	@RequestMapping("/form")
