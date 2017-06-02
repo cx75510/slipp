@@ -25,6 +25,5 @@
 	</bean>
 
 	<bean id="userDao" class="net.slipp.dao.users.MyBaticUserDao"
-	p:sqlSession-ref="sqlSession"
-	p:dataSource-ref="dataSource"/>
+	p:sqlSession-ref="sqlSession"/>
 </beans>

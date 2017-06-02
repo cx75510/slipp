@@ -78,12 +78,6 @@
 		</dependency>
 		
 		<dependency>
-		   <groupId>org.hibernate</groupId>
-		   <artifactId>hibernate-validator</artifactId>
-		   <version>5.4.1.Final</version>
-		</dependency>
-		
-		<dependency>
 		   <groupId>org.glassfish</groupId>
 		   <artifactId>javax.el</artifactId>
 		   <version>3.0.1-b08</version>
@@ -148,6 +142,24 @@
 				<encoding>utf-8</encoding>
 			</configuration>	
 		</plugin>
+		
+		<plugin>
+			<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<url>jdbc:mysql://localhost/slipp</url>
+					<user>root</user>
+					<password>sungho</password>
+				</configuration>
+			<dependencies>
+				<dependency>
+				    <groupId>mysql</groupId>
+				    <artifactId>mysql-connector-java</artifactId>
+				    <version>5.1.42</version>
+				</dependency>
+            </dependencies>
+        </plugin>
   	</plugins>
   </build>
 </project>
